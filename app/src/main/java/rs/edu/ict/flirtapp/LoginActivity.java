@@ -67,14 +67,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         btnSignIn =(Button)findViewById(R.id.btnSignIn);
-        btnSignIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                LoginUser();
-
-            }
-        });
+        btnSignIn.setOnClickListener(view -> LoginUser());
         //Dugmence "Tap here" koji otvara SignUpActivity za pravljanje novog profila
         Button signup = (Button)findViewById(R.id.btnSignUp);
         signup.setOnClickListener(new View.OnClickListener() {
