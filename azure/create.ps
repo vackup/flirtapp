@@ -1,0 +1,5 @@
+az group create --name flirtapp --location "West US"
+
+az appservice plan create --name flirtappServicePlan --resource-group flirtapp --sku FREE
+
+az --% webapp create --resource-group flirtapp --plan flirtappServicePlan --name flirtapp --runtime "PHP|7.0"

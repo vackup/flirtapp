@@ -1,4 +1,4 @@
 {
-    "appService.defaultWebAppToDeploy": "/subscriptions/277faf71-46cb-40b0-9521-1bdc46a54fc6/resourceGroups/appsvc_windows_centralus/providers/Microsoft.Web/sites/flirtappphp",
-    "appService.deploySubpath": ""
+    "appService.deploySubpath": "",
+    "appService.defaultWebAppToDeploy": "/subscriptions/277faf71-46cb-40b0-9521-1bdc46a54fc6/resourceGroups/flirtapp/providers/Microsoft.Web/sites/flirtapp"
 }

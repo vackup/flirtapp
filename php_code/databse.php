@@ -3,10 +3,10 @@
 /**
 * 
 */
-define("DB_HOST", "mysql9.000webhost.com");
-define("DB_USER", "a4364992_flirt");
-define("DB_PASSWORD", "dasa1016188");
-define("DB_DATABASE", "a4364992_flirta");
+define("DB_HOST", getenv("DB_HOST"));
+define("DB_USER", getenv("DB_USER"));
+define("DB_PASSWORD", getenv("DB_PASSWORD"));
+define("DB_DATABASE", getenv("DB_DATABASE"));
 class Database 
 {
 
@@ -33,7 +33,11 @@ class Database
 	//method  for mysql_connection
 	public function connect()
 	{
-		$this->conn=mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_DATABASE) or die("Connection error");
+		$con=mysqli_init(); 
+		//mysqli_ssl_set($con, NULL, NULL, {ca-cert filename}, NULL, NULL); 
+		$this->conn = mysqli_real_connect($con, DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE, 3306) or die("Connection error");
+
+		//$this->conn=mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_DATABASE) or die("Connection error");
 		//$this->conn=mysqli_connect("localhost","root","","flirtapp") or die("Connection error");
 	}
 
