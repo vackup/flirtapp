@@ -36,12 +36,14 @@ class Database
 	{
 		$con=mysqli_init(); 
 		mysqli_ssl_set($con, NULL, NULL, "BaltimoreCyberTrustRoot.crt.pem", NULL, NULL); 
-		$this->conn = mysqli_real_connect($con, DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE, 3306);
+		mysqli_real_connect($con, DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE, 3306) or die('Failed to connect to MySQL: '.mysqli_connect_error());
 
-		if (mysqli_connect_errno($conn)) 
+		if (mysqli_connect_errno($con)) 
 		{
 			die('Failed to connect to MySQL: '.mysqli_connect_error());
 		}
+
+		$this->conn = $con;
 
 		//$this->conn=mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_DATABASE) or die("Connection error");
 		//$this->conn=mysqli_connect("localhost","root","","flirtapp") or die("Connection error");
@@ -67,6 +69,7 @@ class Database
 				$array["AvatarPath"] = $row["AvatarPath"];
 				$array["success"] = true;
 				$array["active"] = $this->isActive($userID);
+				
 				return $array;
 			}
 			else
@@ -74,6 +77,7 @@ class Database
 				$array["userID"] = null;
 				$array["success"] = false;
 				$array["active"] = null;
+				
 				return $array;
 			}
 	}
@@ -100,11 +104,11 @@ class Database
 				$password=md5($password);//password hashing
 				$hash = md5($username);//can putt double md5
 				
-				$query="INSERT INTO `t_User`( `UserName`, `Password`, `Email`, `Gender`, `LastActivity`, `IsActiv`, `DayOfBirth`, `IsLogedIn`, `Hash`)
-				 VALUES ('$username','$password','$email','$gender',0,0,0,0,'$hash')";
+				$query="INSERT INTO `t_User`( `UserName`, `Password`, `Email`, `Gender`, `LastActivity`, `IsActiv`, `DayOfBirth`, `IsLogedIn`, `Hash`) 
+				VALUES ('$username','$password','$email','$gender',0,0,0,0,'$hash')";
 
 				//execute the query
-				 $result = mysqli_query($this->conn,$query);
+				 $result = mysqli_query($this->conn, $query);
 				 
 				 if($result){
 					$resArray["succes"] = true;

@@ -51,7 +51,7 @@ public class GetAllNoneUsers extends AsyncTask<String, Void, JSONObject> {
         BufferedReader reader = null;
 
         HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost("http://flirtapp.host56.com/allNonFriends.php");
+        HttpPost httppost = new HttpPost("https://flirtapp.azurewebsites.net/allNonFriends.php");
         String forecastJsonStr = null;
 
 
@@ -61,7 +61,7 @@ public class GetAllNoneUsers extends AsyncTask<String, Void, JSONObject> {
             // http://openweathermap.org/API#forecast
             Uri.Builder uriBuilder = new Uri.Builder();
 
-            uriBuilder.encodedPath("http://flirtapp.host56.com/allNonFriends.php");
+            uriBuilder.encodedPath("https://flirtapp.azurewebsites.net/allNonFriends.php");
             uriBuilder.appendQueryParameter("mode", "POST");
             URL url = new URL(uriBuilder.build().toString());
 

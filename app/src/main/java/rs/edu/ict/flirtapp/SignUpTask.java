@@ -39,14 +39,14 @@ public class SignUpTask extends AsyncTask<String, Void, JSONObject> {
         BufferedReader reader = null;
 
         HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost("http://flirtapp.host56.com/login.php");
+        HttpPost httppost = new HttpPost("https://flirtapp.azurewebsites.net/login.php");
 
         String forecastJsonStr = null; //Pazi pise forecastJsonStr promeni ime
 
         try {
             Uri.Builder uriBuilder = new Uri.Builder();
 
-            uriBuilder.encodedPath("http://flirtapp.host56.com/register.php");  //Ne znam da li gadjam dobru stranicu PROVERI!!!
+            uriBuilder.encodedPath("https://flirtapp.azurewebsites.net/register.php");  //Ne znam da li gadjam dobru stranicu PROVERI!!!
             uriBuilder.appendQueryParameter("mode", "POST");
             URL url = new URL(uriBuilder.build().toString());
 

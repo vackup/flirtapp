@@ -41,7 +41,7 @@ public class LoginTask extends AsyncTask<String, Void, JSONObject> {
         BufferedReader reader = null;
 
         HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost("http://flirtapp.host56.com/login.php");
+        HttpPost httppost = new HttpPost("https://flirtapp.azurewebsites.net/login.php");
 
         // Will contain the raw JSON response as a string.
         String forecastJsonStr = null;
@@ -53,7 +53,7 @@ public class LoginTask extends AsyncTask<String, Void, JSONObject> {
             // http://openweathermap.org/API#forecast
             Uri.Builder uriBuilder = new Uri.Builder();
 
-            uriBuilder.encodedPath("http://flirtapp.host56.com/login.php");
+            uriBuilder.encodedPath("https://flirtapp.azurewebsites.net/login.php");
             uriBuilder.appendQueryParameter("mode", "POST");
             URL url = new URL(uriBuilder.build().toString());
 
