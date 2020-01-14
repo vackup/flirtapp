@@ -1,12 +1,13 @@
 <?php
 //class for databse connections
 /**
-* 
+* More info at https://docs.microsoft.com/en-us/azure/app-service/app-service-web-tutorial-php-mysql#connect-app-to-azure-mysql
 */
 define("DB_HOST", getenv("DB_HOST"));
 define("DB_USER", getenv("DB_USER"));
 define("DB_PASSWORD", getenv("DB_PASSWORD"));
 define("DB_DATABASE", getenv("DB_DATABASE"));
+
 class Database 
 {
 
@@ -34,8 +35,13 @@ class Database
 	public function connect()
 	{
 		$con=mysqli_init(); 
-		//mysqli_ssl_set($con, NULL, NULL, {ca-cert filename}, NULL, NULL); 
-		$this->conn = mysqli_real_connect($con, DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE, 3306) or die("Connection error");
+		mysqli_ssl_set($con, NULL, NULL, "BaltimoreCyberTrustRoot.crt.pem", NULL, NULL); 
+		$this->conn = mysqli_real_connect($con, DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE, 3306);
+
+		if (mysqli_connect_errno($conn)) 
+		{
+			die('Failed to connect to MySQL: '.mysqli_connect_error());
+		}
 
 		//$this->conn=mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_DATABASE) or die("Connection error");
 		//$this->conn=mysqli_connect("localhost","root","","flirtapp") or die("Connection error");
