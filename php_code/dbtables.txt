@@ -1,0 +1,30 @@
+t_User
+ID
+UserName
+Password
+Email
+Gender
+LastActivity
+IsActiv
+DayOfBirth
+IsLogedIn
+Hash
+AvatarPath
+
+t_UserFriends
+UserReq INT
+UserAdd INT
+IsAccepted INT
+IsDeleted INT
+
+t_UserRelatedMatch
+MatchID
+UserID
+UserRelated
+Seen
+
+s_MatchType
+ID (MatchID)
+Name
+Description
+PicturePath
